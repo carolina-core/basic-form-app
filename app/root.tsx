@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import styles from "./styles/app.css"
+import CardRootLayout from "./ui/Layout/RootLayout";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }]
@@ -46,7 +47,9 @@ export function Document({
 export default function App() {
   return (
     <Document>
-      <Outlet />
+      <CardRootLayout >
+        <Outlet />
+      </CardRootLayout>
     </Document>
   )
 };
@@ -55,7 +58,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <Document title="Uh-oh!">
       <div className="error-container">
-        <h1>App Error { error.name }</h1>
+        <h1>App Error {error.name}</h1>
         <pre>{error.message}</pre>
       </div>
     </Document>
